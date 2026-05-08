@@ -3,6 +3,11 @@ import pandas as pd
 
 st.title("🌟 NMIXX 韓文語境字典")
 
+import streamlit as st
+import pandas as pd
+
+st.title("🌟 NMIXX 韓文語境字典")
+
 # 讀取大腦
 @st.cache_data
 def load_data():
@@ -24,16 +29,16 @@ try:
                 # 自動幫你計算分秒，方便你看影片
                 sec = int(float(row['秒數']))
                 # 換成你那支 15 分鐘影片的網址
-# 這是新的，請貼上
+                # 這是新的，請貼上
                 video_id = "fg9Z4-Dnukk"
-# 注意：嵌入式連結要用 /embed/，參數要用 ?start=
+                # 注意：嵌入式連結要用 /embed/，參數要用 ?start=
                 embed_url = f"https://www.youtube.com/embed/{video_id}?start={sec}&autoplay=1"
 
-                with st.expander(f"⏰ {sec//60}分{sec%60}秒 | {row['內容']}"):
-                # 我們改用 HTML 模式，這能強制 YouTube 從特定秒數開始播
-                st.components.v1.html(
-                    f'<iframe width="100%" height="315" src="{embed_url}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
-                     height=350,
+                    with st.expander(f"⏰ {sec//60}分{sec%60}秒 | {row['內容']}"):
+                    # 我們改用 HTML 模式，這能強制 YouTube 從特定秒數開始播
+                    st.components.v1.html(
+                        f'<iframe width="100%" height="315" src="{embed_url}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+                        height=350,
     )
         else:
             st.error("AI 好像沒聽清楚這個詞，換個簡單的字試試？")
